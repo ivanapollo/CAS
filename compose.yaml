@@ -3,7 +3,7 @@ services:
     build: 
       context: ./back
     ports:
-      - 80:80
+      - 3005:80
   
   front:
     build:
