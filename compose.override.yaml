@@ -10,6 +10,7 @@ services:
     build:
       target: dev
     volumes:
-      - ./front:/code
+      - ./front/public:/code/public
+      - ./front/src:/code/src
     environment:
       - NODE_ENV=development

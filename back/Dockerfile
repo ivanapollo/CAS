@@ -6,6 +6,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # dev layer, ./app is binded to /code/app
 FROM base AS dev
+WORKDIR /code
 CMD ["fastapi", "dev", "app/main.py", "--host", "0.0.0.0", "--port", "80"]
 EXPOSE 80
 
