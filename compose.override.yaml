@@ -1,0 +1,15 @@
+# overrides for dev environment
+services:
+  back:
+    build:
+      target: dev
+    volumes:
+      - ./back/app:/code/app
+  
+  front:
+    build:
+      target: dev
+    volumes:
+      - ./front:/code
+    environment:
+      - NODE_ENV=development
