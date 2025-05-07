@@ -5,6 +5,7 @@ services:
       target: dev
     volumes:
       - ./back/app:/code/app
+      - ./back/sup.db:/code/sup.db
     environment:
       - DB_HOST=db
       - DB_PORT=3306
