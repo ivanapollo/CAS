@@ -11,6 +11,8 @@ export function LogoutButton() {
     deleteCookie('id')
     deleteCookie('role')
     deleteCookie('info')
+    deleteCookie('group_id')
+    deleteCookie('subgroup')
     router.push("/")
     router.refresh()
   }

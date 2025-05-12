@@ -31,19 +31,23 @@ async def login(data: UserLoginSchema, session: SessionDep):
     role = user.role
     info = f"{user.surname} {user.name[0]}.{user.patronymic[0]}."
 
-    if role == "Студент":
+    result = {"id": user.id, "role": role}
+    if role in ["Студент", "Староста"]:
         group_query = (
-            select(GroupModel.name)
+            select(GroupModel.name, GroupModel.id, StudentGroupModel.subgroup)
             .select_from(StudentGroupModel)
             .join(GroupModel, StudentGroupModel.group_id == GroupModel.id)
             .where(StudentGroupModel.student_id == user.id)
         )
 
         group_result = await session.execute(group_query)
-        group = group_result.scalar_one_or_none()  # Get just the group name
+        group = group_result.first()
         
         if group:
-            info = f"{info} {group}"
+            info = f"{info} {group.name}"
+            result["group_id"] = group.id
+            result["subgroup"] = group.subgroup
 
-    return {"id": user.id, "role": role, "info": info}
+    result["info"] = info
 
+    return result

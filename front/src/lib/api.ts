@@ -32,3 +32,30 @@ export const loginAPI = {
     })
   },
 }
+
+// API для получения посещаемости
+export const attendanceAPI = {
+  get: async () => {
+    return fetchAPI("/attendances", {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения занятий
+export const lessonsAPI = {
+  get: async () => {
+    return fetchAPI("/lessons", {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения занятий
+export const disciplineAPI = {
+  get: async () => {
+    return fetchAPI("/disciplines", {
+      method: "GET",
+    })
+  },
+}

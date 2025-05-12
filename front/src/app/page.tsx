@@ -42,6 +42,10 @@ export default function LoginPage() {
       setCookie('id', response.id, { expires: new Date(Date.now() + timeExp) })
       setCookie('role', roleMap.get(response.role), { expires: new Date(Date.now() + timeExp) })
       setCookie('info', response.info, { expires: new Date(Date.now() + timeExp) })
+      if (roleMap.get(response.role) === "student") {
+        setCookie('group_id', response.group_id, { expires: new Date(Date.now() + timeExp) })
+        setCookie('subgroup', response.subgroup, { expires: new Date(Date.now() + timeExp) })
+      }
       router.push("/")
       router.refresh()
     } catch (error: any) {
