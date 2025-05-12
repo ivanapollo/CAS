@@ -16,8 +16,18 @@ export function LogoutButton() {
   }
 
   return (
-    <Button variant="outlined" onClick={handleLogout} sx={{ color: "white" }}>
-      Выйти
-    </Button>
+      <Button
+        variant="contained"
+        onClick={handleLogout}
+        sx={{
+          bgcolor: "white",
+          color: "#1976d2",
+          "&:hover": {
+            bgcolor: "#f5f5f5",
+          },
+        }}
+      >
+        ВЫЙТИ
+      </Button>
   )
 }
