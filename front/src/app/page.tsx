@@ -3,12 +3,13 @@
 import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Box, Button, Container, TextField, Typography, Paper } from "@mui/material"
+import { Box, Button, Container, TextField, Typography, Paper, FormHelperText } from "@mui/material"
 import type { Login } from "@/lib/types"
 import { loginAPI } from "@/lib/api"
 import { setCookie } from "cookies-next/client"
 
 const roleMap = new Map<string, string>([
+  ["Староста", "student"],
   ["Студент", "student"],
   ["Преподаватель", "teacher"],
   ["Сотрудник дирекции", "admin"]
@@ -22,7 +23,7 @@ export default function LoginPage() {
     login: "",
     password: "",
   })
-  // const [error, setError] = useState()
+  const [error, setError] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -30,6 +31,7 @@ export default function LoginPage() {
       ...prev,
       [name]: value,
     }))
+    if (error) setError(false)
   }
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -42,9 +44,8 @@ export default function LoginPage() {
       setCookie('info', response.info, { expires: new Date(Date.now() + timeExp) })
       router.push("/")
       router.refresh()
-    }
-    catch (error: any) {
-      // setError("")
+    } catch (error: any) {
+      setError(true)
     }
   }
 
@@ -65,7 +66,7 @@ export default function LoginPage() {
             Вход
           </Typography>
 
-          <Box component="form" onSubmit={handleLogin} sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleLogin} sx={{ mt: 2 }}>
             <TextField
               margin="normal"
               required
@@ -78,6 +79,7 @@ export default function LoginPage() {
               onChange={handleChange}
               variant="outlined"
               sx={{ mb: 2 }}
+              error={error}
             />
 
             <TextField
@@ -92,8 +94,15 @@ export default function LoginPage() {
               value={loginData.password}
               onChange={handleChange}
               variant="outlined"
-              sx={{ mb: 2 }}
+              sx={{ mb: 0 }}
+              error={error}
             />
+
+            {error && (
+              <FormHelperText error sx={{ mb: 2 }}>
+                Некорректный логин или пароль
+              </FormHelperText>
+            )}
 
             <Button
               type="submit"

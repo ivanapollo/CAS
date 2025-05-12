@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
-import Drawer from '@mui/material/Drawer';
+import Drawer from '@mui/material/Drawer'
 import MuiAppBar, { type AppBarProps as MuiAppBarProps } from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import List from "@mui/material/List"
@@ -21,10 +21,10 @@ import Link from "next/link"
 import { LogoutButton } from "../common/LogoutButton"
 import { getCookie } from "cookies-next"
 
-const drawerWidth = 240;
+const drawerWidth = 260
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-  open?: boolean;
+  open?: boolean
 }>(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
@@ -45,10 +45,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
       },
     },
   ],
-}));
+}))
 
 interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
+  open?: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -71,7 +71,7 @@ const AppBar = styled(MuiAppBar, {
       },
     },
   ],
-}));
+}))
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -79,10 +79,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-}));
+}))
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const toggleDrawer = () => {
     setOpen(!open)
   }
