@@ -23,7 +23,7 @@ export default function middleware(req: NextRequest) {
     case "admin": {
       if (path.startsWith(adminPath) || path.startsWith(attendancePath))
         return NextResponse.next()
-      return NextResponse.redirect(new URL(attendancePath, req.nextUrl))  
+      return NextResponse.redirect(new URL(adminPath, req.nextUrl))  
     }
     default: {
       if (path === loginPath)
