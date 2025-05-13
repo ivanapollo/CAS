@@ -28,15 +28,6 @@ import {
   getNextWeek
 } from "@/lib/schedule"
 
-interface ClassSession {
-  number: number
-  timeStart: string
-  timeEnd: string
-  subject: string
-  type: string
-  attendance: string | null
-}
-
 export default function StudentCalendar() {
   const [disciplines, setDisciplines] = useState<Discipline[]>([])
   const [lessons, setLessons] = useState<Lesson[]>([])

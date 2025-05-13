@@ -51,10 +51,46 @@ export const lessonsAPI = {
   },
 }
 
-// API для получения занятий
+// API для получения предметов
 export const disciplineAPI = {
   get: async () => {
     return fetchAPI("/disciplines", {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения групп
+export const groupsAPI = {
+  get: async () => {
+    return fetchAPI("/groups", {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения старост
+export const headmenAPI = {
+  get: async (group_id: number) => {
+    return fetchAPI(`/api/student_data/groups/${group_id}/headmen/`, {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения подгрупп
+export const subgroupsAPI = {
+  get: async (group_id: number) => {
+    return fetchAPI(`/api/student_data/groups/${group_id}/subgroups/`, {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения студентов в академическом отпуске
+export const academicLeaveAPI = {
+  get: async (group_id: number) => {
+    return fetchAPI(`/api/student_data/groups/${group_id}/academic-leave/students/`, {
       method: "GET",
     })
   },
