@@ -95,3 +95,21 @@ export const academicLeaveAPI = {
     })
   },
 }
+
+// API для пользователей
+export const usersAPI = {
+  get: async () => {
+    return fetchAPI("/users", {
+      method: "GET",
+    })
+  },
+}
+
+// API для получения элективов
+export const electivesAPI = {
+  get: async () => {
+    return fetchAPI("/electives", {
+      method: "GET",
+    })
+  },
+}
