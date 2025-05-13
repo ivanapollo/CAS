@@ -1,7 +1,7 @@
 import type { Login } from "@/lib/types"
 
 // URL API
-const API_URL = "http://localhost:8000"
+const API_URL = "http://localhost:3005"
 
 // Общая функция для выполнения запросов
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
