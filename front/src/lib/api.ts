@@ -95,3 +95,52 @@ export const academicLeaveAPI = {
     })
   },
 }
+
+
+export const teacherDisciplinesAPI = {
+  get: async (teacher_id: number) => {
+    return fetchAPI(`/api/attendance/teachers/${teacher_id}/disciplines/`, {
+      method: "GET",
+    })
+  },
+}
+
+export const disciplinesTypesAPI = {
+  get: async (discipline_id: number) => {
+    return fetchAPI(`/api/attendance/lessons/${discipline_id}/types/`, {
+      method: "GET",
+    })
+  },
+}
+
+export const groupsByDisciplineAPI = {
+  get: async (teacher_id: number, discipline_id: number, lesson_type: string) => {
+    // Формируем query параметры
+    const params = new URLSearchParams({
+      teacher_id: teacher_id.toString(),
+      discipline_id: discipline_id.toString(),
+      lesson_type: lesson_type,
+    });
+
+    const response = await fetchAPI(`/api/attendance/groups/filter?${params.toString()}`, {
+      method: "GET",
+    });
+
+    return response;
+  },
+};
+
+export const subgroupByGroupAndTypeAPI = {
+  get: async (group_id : number, teacher_id: number, discipline_id: number, lesson_type: string) => {
+    // Формируем query параметры
+    const params = new URLSearchParams({
+      teacher_id: teacher_id.toString(),
+      discipline_id: discipline_id.toString(),
+      lesson_type: lesson_type,
+    });
+
+    return fetchAPI(`/api/attendance/groups/${group_id}/subgroups/?${params.toString()}`, {
+      method: "GET",
+    })
+  },
+}
