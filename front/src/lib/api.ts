@@ -105,55 +105,13 @@ export const usersAPI = {
   },
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const teacherDisciplinesAPI = {
+  get: async (teacher_id: number) => {
+    return fetchAPI(`/api/attendance/teachers/${teacher_id}/disciplines`, {
+      method: "GET",
+    })
+  },
+}
 
 export const disciplinesTypesAPI = {
   get: async (discipline_id: number) => {
