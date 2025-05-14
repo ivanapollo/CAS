@@ -105,6 +105,14 @@ export const usersAPI = {
   },
 }
 
+// API для пользователей
+export const electivesAPI = {
+  get: async () => {
+    return fetchAPI("/electives", {
+      method: "GET",
+    })
+  },
+}
 export const teacherDisciplinesAPI = {
   get: async (teacher_id: number) => {
     return fetchAPI(`/api/attendance/teachers/${teacher_id}/disciplines`, {

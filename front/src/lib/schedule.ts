@@ -54,8 +54,8 @@ export interface Schedule {
 
 const markMap = new Map<string, string>([
   ["Был", "present"],
-  ["Не был по уважительной причине", "absent-valid"],
-  ["Не был по неуважительной причине", "absent-invalid"],
+  ["Уваж", "absent-valid"],
+  ["Не уваж", "absent-invalid"],
   ["Академический отпуск", "academic-leave"]
 ])
 
