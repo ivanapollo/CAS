@@ -21,7 +21,10 @@ export default function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL(attendancePath, req.nextUrl))  
     }
     case "admin": {
-      if (path.startsWith(adminPath) || path.startsWith(attendancePath))
+      // Временное перенаправление
+      if (path.startsWith(attendancePath))
+        return NextResponse.redirect(new URL(adminPath + "/headmen", req.nextUrl))  
+      if (path.startsWith(adminPath))
         return NextResponse.next()
       return NextResponse.redirect(new URL(attendancePath, req.nextUrl))  
     }
