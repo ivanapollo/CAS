@@ -144,3 +144,12 @@ export const subgroupByGroupAndTypeAPI = {
     })
   },
 }
+
+export const getAttendanceAPI = {
+  get: async (group_id : number, subgroup: number, discipline_id: number) => {
+
+    return fetchAPI(`/api/attendance/marks/${group_id}/${subgroup}/${discipline_id}/`, {
+      method: "GET",
+    })
+  },
+}
