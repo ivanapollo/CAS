@@ -96,14 +96,64 @@ export const academicLeaveAPI = {
   },
 }
 
-
-export const teacherDisciplinesAPI = {
-  get: async (teacher_id: number) => {
-    return fetchAPI(`/api/attendance/teachers/${teacher_id}/disciplines/`, {
+// API для пользователей
+export const usersAPI = {
+  get: async () => {
+    return fetchAPI("/users", {
       method: "GET",
     })
   },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const disciplinesTypesAPI = {
   get: async (discipline_id: number) => {

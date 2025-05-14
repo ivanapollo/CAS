@@ -17,7 +17,6 @@ import MenuIcon from "@mui/icons-material/Menu"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import ListItems from "@/components/layout/ListItems"
-import Link from "next/link"
 import { LogoutButton } from "../common/LogoutButton"
 import { getCookie } from "cookies-next"
 
@@ -109,9 +108,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            <Link href="/admin" style={{ color: "inherit", textDecoration: "none" }}>
-              Система учёта посещаемости
-            </Link>
+            Система учёта посещаемости
           </Typography>
           <Box display="flex">
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1, mr: 3 }}>
@@ -149,7 +146,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         sx={{
           flexGrow: 1,
           height: "100vh",
-          overflow: "auto",
         }}
       >
         <Toolbar />
