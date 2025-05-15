@@ -10,3 +10,14 @@ services:
       context: ./front
     ports:
       - 3000:3000
+  
+  db:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
