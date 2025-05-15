@@ -192,3 +192,8 @@ sketch
 
 # visual studio code stuff
 *.code-workspace
+
+# database data and dumps
+
+mariadb_data/
+dumps/

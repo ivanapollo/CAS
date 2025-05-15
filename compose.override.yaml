@@ -5,7 +5,7 @@ services:
       target: dev
     volumes:
       - ./back/app:/code/app
-      - ./back/sup.db:/code/sup.db
+      # - ./back/sup.db:/code/sup.db
     environment:
       - DB_HOST=db
       - DB_PORT=3306
@@ -32,7 +32,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - ./mariadb_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 1m

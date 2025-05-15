@@ -74,7 +74,7 @@ router = APIRouter(prefix="/api/attendance", tags=["attendance"])
 async def get_teacher_disciplines(
     teacher_id: int,
     session: SessionDep
-) -> dict:
+) -> list:
     """
     Получение списка дисциплин преподавателя.
 

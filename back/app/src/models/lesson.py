@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.database import Base
-from sqlalchemy import BigInteger, String, Date, Time, ForeignKey
+from sqlalchemy import BigInteger, Integer, String, Date, Time, ForeignKey
 
 
 class LessonModel(Base):
@@ -8,21 +8,21 @@ class LessonModel(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     discipline_id: Mapped[int] = mapped_column(
-        BigInteger,
+        Integer,
         ForeignKey("discipline.id", ondelete="CASCADE")
     )
     date: Mapped[str] = mapped_column(String)
     time_start: Mapped[str] = mapped_column(String)
     time_end: Mapped[str] = mapped_column(String)
     group_id: Mapped[int] = mapped_column(
-        BigInteger,
+        Integer,
         ForeignKey("group.id", ondelete="CASCADE")
     )
     teacher_id: Mapped[int] = mapped_column(
-        BigInteger,
-        ForeignKey("user.id", ondelete="SET NULL")
+        Integer,
+        ForeignKey("user.id", ondelete="SET DEFAULT")
     )
-    subgroup: Mapped[int] = mapped_column(BigInteger)
+    subgroup: Mapped[int] = mapped_column(Integer)
     type: Mapped[str] = mapped_column(String)
 
     discipline: Mapped["DisciplineModel"] = relationship(
