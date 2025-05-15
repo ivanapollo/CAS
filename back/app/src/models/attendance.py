@@ -1,18 +1,18 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.database import Base
-from sqlalchemy import BigInteger, String, ForeignKey
+from sqlalchemy import BigInteger, Integer, String, ForeignKey
 
 
 class AttendanceModel(Base):
     __tablename__ = "attendance"
 
     lesson_id: Mapped[int] = mapped_column(
-        BigInteger,
+        Integer,
         ForeignKey("lesson.id", ondelete="CASCADE"),
         primary_key=True
     )
     student_id: Mapped[int] = mapped_column(
-        BigInteger,
+        Integer,
         ForeignKey("user.id", ondelete="CASCADE"),
         primary_key=True
     )
