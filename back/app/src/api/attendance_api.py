@@ -87,13 +87,20 @@ async def get_teacher_disciplines(
     """
     # Получение уникальных названий дисциплин преподавателя
     result = await session.execute(
-        select(DisciplineModel.name)
+        select(DisciplineModel.id, DisciplineModel.name)
         .join(LessonModel)
         .filter(LessonModel.teacher_id == teacher_id)
         .distinct()
     )
 
-    return result.scalars().all()
+    rows = result.all()  # список кортежей (id, name)
+
+    # Преобразуем в список словарей
+    disciplines = [{"id": row[0], "name": row[1]} for row in rows]
+
+    # return result.all()
+    return disciplines
+
 
 
 @router.get(
@@ -121,7 +128,7 @@ async def read_groups_by_filters(
 
     # Поиск групп по заданным критериям
     query = (
-        select(GroupModel.name)
+        select(GroupModel.id, GroupModel.name)
         .join(LessonModel)
         .join(DisciplineModel)
         .filter(
@@ -132,8 +139,12 @@ async def read_groups_by_filters(
         .distinct()
     )
 
-    result = await session.execute(query)
-    return result.scalars().all()
+    rows = await session.execute(query)
+
+    # Преобразуем в список словарей
+    groups = [{"id": row[0], "name": row[1]} for row in rows]
+
+    return groups 
 
 
 @router.get("/groups/{group_id}/subgroups",
