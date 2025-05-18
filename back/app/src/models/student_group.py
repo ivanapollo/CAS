@@ -28,3 +28,11 @@ class StudentGroupModel(Base):
         back_populates="student_group",
         passive_deletes=True
     )
+class StudentGroupModelUpdate(StudentGroupModel):
+    __tablename__ = "student_group"
+    __allow_unmapped__ = True
+    group_id: Mapped[int] | None = None
+    student_id: Mapped[int] | None = None
+    device_address: Mapped[str] | None = None
+    academic_leave: Mapped[bool] | None = None
+    subgroup: Mapped[int] | None = None
